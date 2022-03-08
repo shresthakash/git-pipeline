@@ -13,8 +13,8 @@ pipeline {
 		
 		stage('build'){
 			steps{
-				script
-						{/home/ec2-user/apache-maven-3.8.4/bin/mvn -f /var/lib/jenkins/workspace/new_pipeline/pom.xml install
+				script{
+						sh'/home/ec2-user/apache-maven-3.8.4/bin/mvn -f /var/lib/jenkins/workspace/new_pipeline/pom.xml install'
 					}
 			}
 		}

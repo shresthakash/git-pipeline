@@ -1,22 +1,22 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'Version', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+		parameters {
+				string(name: 'Version', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 		}
 		
 		stages { 
-        stage('Example') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/pipeline2.0']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shresthakash/git-pipeline.git']]])
-            }
-        }
-		
-		stage('build'){
-			steps{
-				script{
-						sh'/home/ec2-user/apache-maven-3.8.4/bin/mvn -f /var/lib/jenkins/workspace/new_pipeline/pom.xml install'
-					}
+			stage('Example') {
+				steps {
+					checkout([$class: 'GitSCM', branches: [[name: '*/pipeline2.0']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shresthakash/git-pipeline.git']]])
+				}
+			}
+			
+			stage('build'){
+				steps{
+					script{
+							sh'/home/ec2-user/apache-maven-3.8.4/bin/mvn -f /var/lib/jenkins/workspace/new_pipeline/pom.xml install'
+						}
+				}
 			}
 		}
-    }
 }
