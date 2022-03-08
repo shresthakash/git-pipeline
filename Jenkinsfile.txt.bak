@@ -10,5 +10,13 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/pipeline2.0']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shresthakash/git-pipeline.git']]])
             }
         }
+		
+		stage('build'){
+			steps{
+				script
+						{/home/ec2-user/apache-maven-3.8.4/bin/mvn -f /var/lib/jenkins/workspace/new_pipeline/pom.xml install
+					}
+			}
+		}
     }
 }
