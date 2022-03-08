@@ -7,7 +7,7 @@ pipeline {
 		stages { 
         stage('Example') {
             steps {
-                echo 'Hello World'
+                checkout([$class: 'GitSCM', branches: [[name: '*/pipeline2.0']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shresthakash/git-pipeline.git']]])
             }
         }
     }
