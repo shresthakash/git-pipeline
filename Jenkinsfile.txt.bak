@@ -1,4 +1,3 @@
-#asdasd
 pipeline {
     agent any
     parameters {
